@@ -3,29 +3,35 @@
     border: 1px solid orange;
 }
 
+
+/*____NAV BAR____*/
 .nav-container{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    height: 90px;
     position: fixed;
     
 
 }
 
-.sidebar-container {
+/* _____DASHBOARD_____ */
+.dashboard-sidebar-container {
     display: flex;
     flex-direction: column;
     width: 15%;
     height: 1000px;
     position: fixed;
     left: 0;
-    top: 15%;
+    top: 0;
+    margin-top: 110px;
 }
 
-.dashboard-mid-container{
+.dashboard-container{
     display: flex;
     flex: row;
+    margin: 90px;
 }
 
 .dashboard-messages-container{
@@ -33,11 +39,12 @@
     height: 1000px;
     position: fixed;
     right: 0;
-    top: 15%;
-
+    top: 0;
+    z-index: 0;
+    margin-top: 110px;
 }
 
-.profile-container{
+.dashboard-profile-container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,10 +54,29 @@
 
 .profile-header{
     text-align: center;
-    margin: 0 65px;
+    margin: 0 115px;
 }
 
 .profile-details{
     margin: 0 65px;
+}
 
+.login-container{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.login-form-container {
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    width: 25%;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }

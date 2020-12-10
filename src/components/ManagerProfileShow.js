@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ManagerProfileShow() {
     return (
-        <div>
+        <div className='dashboard-manager-profile'>
             <img src=''></img>
             <h2>MGMT Company</h2>
             <h3>Los Angeles, CA</h3>
