@@ -1,14 +1,16 @@
 import './App.css';
-import { BrowswerRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Dashboard from './views/Dashboard'
 import Login from './views/Login';
+import Nav from './components/Nav';
 
 function App() {
   return (
     <div>
         <Router>
+          <Nav />
           <Switch>
-            <Route path='/' component={Login} />
+            <Route path='/' exact component={Login} />
             <Route path='/dashboard' component={Dashboard} />
           </Switch>
         </Router>

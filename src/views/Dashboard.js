@@ -7,8 +7,7 @@ import ProfileShow from '../components/ProfileShow'
 export default function Dashboard() {
     return (
         <div>
-            <Nav />
-            <div className='dashboard-mid-container'>
+            <div className='dashboard-container'>
                 <LeftSidebar />
                 <ProfileShow />
                 <MessageList />
