@@ -5,6 +5,8 @@ import Nav from '../components/Nav'
 import ProfileShow from '../components/ProfileShow'
 
 export default function Dashboard() {
+    console.log(sessionStorage)
+    sessionStorage.userEmail = 'undefined'
     return (
         <div>
             <div className='dashboard-container'>
