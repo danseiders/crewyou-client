@@ -6,7 +6,7 @@ import Nav from './components/Nav';
 
 function App() {
   return (
-    <div>
+    <div className='app'>
         <Router>
           <Nav />
           <Switch>
