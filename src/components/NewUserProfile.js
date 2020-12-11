@@ -1,34 +1,32 @@
 import React, { useState } from 'react'
-import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import Axios from 'axios'
+// import { Redirect } from 'react-router-dom'
 
 export default function NewUserProfile() {
     const [profile, setProfile] = useState({
-        
+        user_id: 2,
+        firstName: '',
+        lastName: '',
+        airport: '',
+        about: '',
+        position1: '',
+        position2: '',
+        position3: '',
+        position4: '',
+        touring: false,
+        availability: ''
     })
     const handleChange = (event) => {
         setProfile({...profile, [event.target.id]: event.target.value})
     }
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault()
-    //     axios.post('http://localhost:8000/users/login', {
-    //         email: user.email,
-    //         password: user.password,
-    //     }).then(res => {
-    //         if(res.data.status.code === 200){
-    //         sessionStorage.setItem('userEmail', res.data.data.email) 
-    //         setUser({password: ''})
-    //         setCurrentUser({email: user.email})
-    //         setReload({dashboard: true})
-    //         } else {
-    //             console.log('something went wrong - try again')
-    //         }
-    //     })
-    // }
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        Axios.post('http://localhost:8000/profile/new', profile, {withCredentials: true})
+    }
     return (
         <div className='new-profile-container'>
-            <form className='new-profile-form-container'>
+            <form className='new-profile-form-container' onSubmit={handleSubmit}>
                 <h1>create user profile</h1>
                 <label htmlFor='firstName'>First</label>
                 <input 

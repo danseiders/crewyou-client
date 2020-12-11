@@ -4,7 +4,7 @@ export default function ProfileShow() {
     return (
         <div className='dashboard-profile-container'>
             <div className='profile-header'>
-                <img src=''></img>
+                <img src='' alt='user'></img>
                 <h2>Name:</h2>
                 <h3>Airport:</h3>
             </div>

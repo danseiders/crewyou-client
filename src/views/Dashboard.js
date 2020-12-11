@@ -1,12 +1,10 @@
 import React from 'react'
 import LeftSidebar from '../components/LeftSidebar'
 import MessageList from '../components/MessageList'
-import Nav from '../components/Nav'
 import ProfileShow from '../components/ProfileShow'
 
 export default function Dashboard() {
-    console.log(sessionStorage)
-    sessionStorage.userEmail = 'undefined'
+    
     return (
         <div>
             <div className='dashboard-container'>
