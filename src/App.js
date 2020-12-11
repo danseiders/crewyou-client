@@ -7,7 +7,7 @@ import NewUserProfile from './components/NewUserProfile';
 
 function App() {
   const user = sessionStorage.username
-  console.log(user)
+  
   if (user === undefined) {
       return (
         <div>

@@ -4,9 +4,9 @@ import Axios from 'axios'
 
 export default function NewUserProfile() {
     const [profile, setProfile] = useState({
-        user_id: 2,
         firstName: '',
         lastName: '',
+        imgURL: '',
         airport: '',
         about: '',
         position1: '',
@@ -28,6 +28,14 @@ export default function NewUserProfile() {
         <div className='new-profile-container'>
             <form className='new-profile-form-container' onSubmit={handleSubmit}>
                 <h1>create user profile</h1>
+                <label htmlFor='imgURL'>imgURL</label>
+                <input 
+                    className='form-input'
+                    type='text' 
+                    name='imgURL' 
+                    id='imgURL' 
+                    onChange={handleChange}>    
+                </input>
                 <label htmlFor='firstName'>First</label>
                 <input 
                     className='form-input'
