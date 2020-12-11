@@ -1,17 +1,10 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import React, {useState} from 'react'
+import Axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
 export default function Login() {
     const [user, setUser] = useState({})
-    // const [currentUser, setCurrentUser] = useState({
-    //     email: ''
-    // })
     const [redirect, setReload] = useState({dashboard: null})
-
-    useEffect(() => {
-        console.log('re-render?')
-    })
 
     const handleChange = (event) => {
         setUser({...user, [event.target.id]: event.target.value})
@@ -19,14 +12,12 @@ export default function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('http://localhost:8000/users/login', {
-            email: user.email,
-            password: user.password,
-        }).then(res => {
+        Axios.post('http://localhost:8000/users/login', user, { withCredentials: true })
+        .then(res => {
             if(res.data.status.code === 200){
-            sessionStorage.setItem('userEmail', res.data.data.email) 
+            sessionStorage.setItem('username', res.data.data.username) 
+            sessionStorage.setItem('crew', res.data.crew)
             setUser({password: ''})
-            // setCurrentUser({email: user.email})
             setReload({dashboard: true})
             } else {
                 console.log('something went wrong - try again')
