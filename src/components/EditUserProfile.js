@@ -42,14 +42,15 @@ export default function NewUserProfile() {
             console.log(res)
         })
     }
-    // const handleDelete = (event) => {
-    //     Axios.delete(`http://localhost:8000/profile/${profile.id}`)
-    //     .catch(err => {
-    //         console.log(err)
-    //     }).then(res => {
-    //         console.log(res)
-    //     })
-    // }
+    const handleDelete = (event) => {
+        Axios.delete(`http://localhost:8000/profile/${profile.id}`)
+        .catch(err => {
+            console.log(err)
+        }).then(res => {
+            console.log(res)
+
+        })
+    }
 
     return (
         <div className='new-profile-container'>
