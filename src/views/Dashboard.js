@@ -8,6 +8,9 @@ import CrewList from '../components/CrewList'
 export default function Dashboard() {
     const [user, setUser] = useState({})
     const [crew, setCrew] = useState([])
+    const [render, setRender] = useState({
+        crewRender: true, //this will be the default view when page is rendered
+    })
 
     useEffect(async () => {
         fetchUser()
@@ -28,11 +31,16 @@ export default function Dashboard() {
         setCrew(res.data.data)
         })
     }
-    
+     const handleClick = (event) => {
+        setRender({[event.target.id]: true})
+     }
     return (
         <div className='dashboard-container'>
-            <LeftSidebar />
-            <DashboardShow user={user} crew={crew}/>
+            <LeftSidebar render={render} handleClick={handleClick}/>
+            <DashboardShow 
+                user={user} 
+                crew={crew} 
+                render={render}/>
             <MessageList />
         </div>
     )

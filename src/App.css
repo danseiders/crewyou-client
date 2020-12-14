@@ -139,3 +139,11 @@
     width: 100%;
     text-align: center;
 }
+
+.dash-crew-container{ 
+    border: 1px solid grey;
+}
+
+.dash-crew-img {
+    width: 4vw;
+}
