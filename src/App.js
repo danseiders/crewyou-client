@@ -4,16 +4,21 @@ import Dashboard from './views/Dashboard'
 import Nav from './components/Nav';
 import Login from './views/Login';
 import NewUserProfile from './components/NewUserProfile';
+import EditUserProfile from './components/EditUserProfile';
+import Home from './views/Home';
 
 function App() {
   const user = sessionStorage.username
   
   if (user === undefined) {
       return (
-        <div>
+        <div className='app'>
           <Router >
             <Nav />
-            <Route path='/' component={Login} />
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path='/login' component={Login} />
+            </Switch>
           </Router>
         </div>
       )
@@ -23,7 +28,8 @@ function App() {
           <Router>
             <Nav />
             <Switch>
-              <Route path='/user' component={NewUserProfile}/>
+              <Route path='/profile/new' exact component={NewUserProfile}/>
+              <Route path='/profile/edit' exact component={EditUserProfile}/>
               {/* <Route path='/manager' component={NewManagerProfile}/> */}
               <Route path='/dashboard' component={Dashboard} />
             </Switch>

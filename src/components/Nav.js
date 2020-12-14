@@ -12,7 +12,20 @@ export default function Nav() {
             setUser({loggedIn: false})
             )
         }
-
+    
+        if(sessionStorage.username === undefined){
+            return (
+            <div className='nav-container'>
+                <div>
+                    <h1>Logo</h1>
+                </div>
+                <div>
+                    <Link to='/signup'>Create account</Link>
+                    <Link to='/login'><button>Sign In</button></Link>
+                </div>
+            </div>
+            )
+        } else {
     return (
         <div className='nav-container'>
             <div>
@@ -21,9 +34,9 @@ export default function Nav() {
             <div>
                 <h5>Hello, {sessionStorage.username}</h5>
                 <Link to='/login'><button>Login</button></Link>
-            
                 <button onClick={handleClick}>Logout</button>
             </div>
         </div>
     )
+    }
 }

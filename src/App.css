@@ -1,8 +1,3 @@
-.app{
-    border: 1px solid orange;
-    height: 100vp;
-}
-
 
 
 /*____NAV BAR____*/
@@ -11,8 +6,9 @@
     flex-direction: row;
     justify-content: space-between;
     width: 98vw;
-    height: 90px;
+    height: 12vh;
     position: fixed;
+    top: 0;
     background-color: rgba(203, 231, 255, 0.959);
 }
 
@@ -107,4 +103,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* _____HOME _____ */
+.home-main-container{
+    display:flex;
+    flex-direction: row;
+    padding-top: 15vh;
+    justify-content: center;
+    align-items: center;
+    width: 75vw;
+}
+
+.home-title-about{
+    width: 50vw;
 }
