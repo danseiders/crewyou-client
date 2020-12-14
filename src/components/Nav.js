@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 
 export default function Nav() {
     const [user, setUser] = useState({})
+    const [render, setRender] = useState({
+        createUser: false
+    })
 
     const handleClick = () =>{
         Axios.get('http://localhost:8000/users/logout', {withCredentials: true})
@@ -12,6 +15,9 @@ export default function Nav() {
             setUser({loggedIn: false})
             )
         }
+    const handleReRender = () => {
+        setRender({ createUser: true })
+    }
     
         if(sessionStorage.username === undefined){
             return (
@@ -20,7 +26,7 @@ export default function Nav() {
                     <h1>Logo</h1>
                 </div>
                 <div>
-                    <Link to='/signup'>Create account</Link>
+                    <Link onClick={handleReRender}>Create account</Link>
                     <Link to='/login'><button>Sign In</button></Link>
                 </div>
             </div>

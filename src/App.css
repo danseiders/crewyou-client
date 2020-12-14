@@ -1,4 +1,13 @@
 
+.App {
+    height: 100vh;
+    width: 100vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
 
 /*____NAV BAR____*/
 .nav-container{
@@ -18,7 +27,7 @@
     flex-direction: column;
     text-align: center;
     width: 15%;
-    height: 1000px;
+    height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
@@ -34,7 +43,7 @@
 
 .dashboard-messages-container{
     width: 15%;
-    height: 1000px;
+    height: 100vh;
     text-align: center;
     position: fixed;
     right: 0;
@@ -49,7 +58,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 10000px;
+    height: 100vh;
 }
 
 .profile-header{
@@ -110,11 +119,23 @@
     display:flex;
     flex-direction: row;
     padding-top: 15vh;
-    justify-content: center;
     align-items: center;
     width: 75vw;
 }
 
 .home-title-about{
     width: 50vw;
+}
+
+.home-title-img {
+    width: 30vw;
+    border-radius: 100000px;
+}
+
+.footer-container {
+    font-family: 'Kanit', sans-serif;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
