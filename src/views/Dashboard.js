@@ -18,12 +18,10 @@ export default function Dashboard() {
         })
     }
     return (
-        <div>
-            <div className='dashboard-container'>
-                <LeftSidebar />
-                <ProfileShow user={user}/>
-                <MessageList />
-            </div>
+        <div className='dashboard-container'>
+            <LeftSidebar />
+            <ProfileShow user={user}/>
+            <MessageList />
         </div>
     )
 }

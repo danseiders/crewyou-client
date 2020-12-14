@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default function ProfileShow() {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({
+        imgURL: null
+    })
 
     useEffect(async () => {
         fetchUser()
@@ -27,6 +30,7 @@ export default function ProfileShow() {
                 <h4>{user.touring}</h4>
                 <h4>{user.availability}</h4>
             </div>
+            <Link to='/profile/edit'><button>Edit Profile</button></Link>
         </div>
     )
 }
