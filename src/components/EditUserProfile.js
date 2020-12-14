@@ -155,7 +155,7 @@ export default function NewUserProfile() {
                     onChange= {handleChange}
                     defaultValue={profile.availability}>    
                 </input>
-                <input type='submit' value='Create Profile'></input>
+                <input type='submit' value='Confirm Edits'></input>
                 <button onClick={handleDelete}>Delete Profile</button>
             </form>
         </div>

@@ -6,25 +6,29 @@ import Login from './views/Login';
 import NewUserProfile from './components/NewUserProfile';
 import EditUserProfile from './components/EditUserProfile';
 import Home from './views/Home';
+import Footer from './components/Footer';
+
+
 
 function App() {
   const user = sessionStorage.username
   
   if (user === undefined) {
       return (
-        <div className='app'>
+        <div className='App'>
           <Router >
             <Nav />
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/login' component={Login} />
             </Switch>
+            <Footer />
           </Router>
         </div>
       )
-  } else {
-    return (
-      <div className='app'>
+    } else {
+      return (
+        <div className='App'>
           <Router>
             <Nav />
             <Switch>
@@ -33,6 +37,7 @@ function App() {
               {/* <Route path='/manager' component={NewManagerProfile}/> */}
               <Route path='/dashboard' component={Dashboard} />
             </Switch>
+            <Footer />
           </Router>
       </div>
     )
