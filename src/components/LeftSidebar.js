@@ -1,13 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function LeftSidebar() {
+export default function LeftSidebar(props) {
     return (
         <div className='dashboard-sidebar-container'>
-                <h4>Profile</h4>
-                <h4>Crew</h4>
-                <h4>Messages</h4>
-                <h4>Managers</h4>
-                <h4>Job Board</h4>
+                <Link onClick={props.handleClick} id='profileRender'>Profile</Link>
+                <Link onClick={props.handleClick} id='crewRender'>Crew</Link>
+                <Link onClick={props.handleClick} id='messagesRender'>Messages</Link>
+                <Link onClick={props.handleClick} id='managersRender'>Managers</Link>
+                <Link onClick={props.handleClick} id='jobBoardRender'>Job Board</Link>
+                
         </div>
     )
 }
