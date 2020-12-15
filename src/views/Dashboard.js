@@ -6,7 +6,7 @@ import DashboardShow from '../components/DashboardShow'
 import io from 'socket.io-client'
 
 const serverURL = 'https://crewyou-api.herokuapp.com/'
-const socket = io.connect(`${serverURL}`)
+const socket = io.connect(`${serverURL}`, {withCredentials: true})
 
 export default function Dashboard() {
     const [user, setUser] = useState({})
