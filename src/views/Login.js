@@ -12,7 +12,7 @@ export default function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        Axios.post('http://localhost:8000/users/login', user, { withCredentials: true })
+        Axios.post('https://crewyou-api.herokuapp.com/users/login', user, { withCredentials: true })
         .then(res => {
             if(res.data.status.code === 200){
             sessionStorage.setItem('username', res.data.data.username) 

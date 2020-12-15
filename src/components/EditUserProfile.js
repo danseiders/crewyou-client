@@ -10,7 +10,7 @@ export default function NewUserProfile() {
     }, [])
     
     const fetchUser = () => {
-        Axios.get('http://localhost:8000/profile/user', { withCredentials: true })
+        Axios.get('https://crewyou-api.herokuapp.com/profile/user', { withCredentials: true })
     .then(res => {
         setProfile(res.data.data[0])
         })
@@ -23,7 +23,7 @@ export default function NewUserProfile() {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(profile)
-        Axios.put(`http://localhost:8000/profile/${profile.id}`, {
+        Axios.put(`https://crewyou-api.herokuapp.com/profile/${profile.id}`, {
             firstName: profile.firstName,
             lastName: profile.lastName,
             imgURL: profile.imgURL,
@@ -43,7 +43,7 @@ export default function NewUserProfile() {
         })
     }
     const handleDelete = (event) => {
-        Axios.delete(`http://localhost:8000/profile/${profile.id}`)
+        Axios.delete(`https://crewyou-api.herokuapp.com/profile/${profile.id}`)
         .catch(err => {
             console.log(err)
         }).then(res => {

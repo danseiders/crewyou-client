@@ -5,8 +5,8 @@ import MessageList from '../components/MessageWindow'
 import DashboardShow from '../components/DashboardShow'
 import io from 'socket.io-client'
 
-const serverURL = 'http://localhost:8000'
-const socket = io.connect(`${serverURL}`)
+// const serverURL = 'https://crewyou-api.herokuapp.com/'
+// const socket = io.connect(`${serverURL}`)
 
 export default function Dashboard() {
     const [user, setUser] = useState({})
@@ -22,13 +22,13 @@ export default function Dashboard() {
     
     useEffect( () => {
         function fetchUser() { //this gets the user for user profile display
-            Axios.get('http://localhost:8000/profile/user', { withCredentials: true })
+            Axios.get('https://crewyou-api.herokuapp.com/profile/user', { withCredentials: true })
             .then(res => {
                 setUser(res.data.data[0])
                 })
             }
         function fetchCrew() { //this gets all crew profiles on site
-            Axios.get('http://localhost:8000/profile/all', { withCredentials: true })
+            Axios.get('https://crewyou-api.herokuapp.com/profile/all', { withCredentials: true })
             .then(res => {
                 setCrew(res.data.data)
             })
@@ -37,15 +37,15 @@ export default function Dashboard() {
         fetchUser()
     }, [])
     
-    useEffect(() => {
-        socketOn()
-    }, [messages.length])
+    // useEffect(() => {
+    //     socketOn()
+    // }, [messages.length])
     
-    const socketOn = () => {
-        socket.on('message', msg => {
-            setMessages([...messages, msg])
-        })
-    }
+    // const socketOn = () => {
+    //     socket.on('message', msg => {
+    //         setMessages([...messages, msg])
+    //     })
+    // }
 
     const handleClick = (event) => {
         setRender({[event.target.id]: true})
@@ -57,12 +57,12 @@ export default function Dashboard() {
     
     const onSubmit = (event) => {
         event.preventDefault()
-        if (message !== ''){
-        socket.emit('message', message)
-        setMessage('')
-        }else{
-            alert('Add a message!')
-        }
+        // if (message !== ''){
+        // socket.emit('message', message)
+        // setMessage('')
+        // }else{
+        //     alert('Add a message!')
+        // }
     }
     return (
         <div className='dashboard-container'>
