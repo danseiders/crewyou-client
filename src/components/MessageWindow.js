@@ -1,8 +1,8 @@
 import React from 'react'
-import MessageBox from './MessageBox'
-import MessageForm from './MessageForm'
+import MessageBox from './Messages'
+import MessageForm from './MessageInput'
 
-export default function MessageList(props) {
+export default function MessageWindow(props) {
     return (
         <div className='dashboard-messages-container'>
             <MessageBox 
