@@ -6,7 +6,7 @@ export default function MessageList(props) {
     return (
         <div className='dashboard-messages-container'>
             <MessageBox 
-                messages={props.messages}/>
+            messages={props.messages}/>
             <MessageForm 
                 handleChange={props.handleChange} 
                 onSubmit={props.onSubmit}/>

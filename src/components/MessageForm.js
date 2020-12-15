@@ -7,7 +7,6 @@ export default function MessageForm(props) {
                 <label htmlFor='message'>Message</label>
                 <input type='text' name='message' id='message' onChange={props.handleChange}></input>
                 <input type='submit' value='Send'></input>
-
             </form>
         </div>
     )
