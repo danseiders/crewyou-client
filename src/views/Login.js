@@ -17,7 +17,10 @@ export default function Login() {
             if(res.data.status.code === 200){
             sessionStorage.setItem('username', res.data.data.username) 
             sessionStorage.setItem('crew', res.data.crew)
-            setUser({password: ''})
+            setUser({
+                password: '',
+                username: res.data.data.username
+            })
             setReload({dashboard: true})
             } else {
                 console.log('something went wrong - try again')

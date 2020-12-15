@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Nav() {
-    const [user, setUser] = useState({})
+    // const [user, setUser] = useState({})
     const [render, setRender] = useState({
         createUser: false
     })
@@ -12,7 +12,7 @@ export default function Nav() {
         Axios.get('http://localhost:8000/users/logout', {withCredentials: true})
         .then(
             sessionStorage.removeItem('username'),
-            setUser({loggedIn: false})
+            // setUser({ loggedIn: false })
             )
         }
     const handleReRender = () => {
@@ -23,10 +23,10 @@ export default function Nav() {
             return (
             <div className='nav-container'>
                 <div>
-                    <h1>Logo</h1>
+                    <Link to='/'><h1>CrewYou</h1></Link>
                 </div>
                 <div>
-                    <Link onClick={handleReRender}>Create account</Link>
+                    <Link to='/user/new'>Create account</Link>
                     <Link to='/login'><button>Sign In</button></Link>
                 </div>
             </div>
@@ -35,7 +35,7 @@ export default function Nav() {
     return (
         <div className='nav-container'>
             <div>
-                <h1>Logo</h1>
+                <Link to='/dashboard'><h1>CrewYou</h1></Link>
             </div>
             <div>
                 <h5>Hello, {sessionStorage.username}</h5>

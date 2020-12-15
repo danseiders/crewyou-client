@@ -7,8 +7,7 @@ import NewUserProfile from './components/NewUserProfile';
 import EditUserProfile from './components/EditUserProfile';
 import Home from './views/Home';
 import Footer from './components/Footer';
-
-
+import NewUser from './components/NewUser';
 
 function App() {
   const user = sessionStorage.username
@@ -21,6 +20,7 @@ function App() {
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/login' component={Login} />
+              <Route path='/user/new' exact component={NewUser}/>
             </Switch>
             <Footer />
           </Router>
@@ -34,7 +34,6 @@ function App() {
             <Switch>
               <Route path='/profile/new' exact component={NewUserProfile}/>
               <Route path='/profile/edit' exact component={EditUserProfile}/>
-              {/* <Route path='/manager' component={NewManagerProfile}/> */}
               <Route path='/dashboard' component={Dashboard} />
             </Switch>
             <Footer />
