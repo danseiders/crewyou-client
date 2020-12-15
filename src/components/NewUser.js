@@ -15,7 +15,7 @@ export default function NewUser() {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(user)
-        Axios.post('http://localhost:8000/users/new', user, { withCredentials: true })
+        Axios.post('https://crewyou-api.herokuapp.com/users/new', user, { withCredentials: true })
         .then(res => {
             if(res.data.status.code === 201){
             sessionStorage.setItem('username', res.data.data.username) 

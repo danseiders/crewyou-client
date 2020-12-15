@@ -22,7 +22,7 @@ export default function NewUserProfile() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        Axios.post('http://localhost:8000/profile/', profile, {withCredentials: true})
+        Axios.post('https://crewyou-api.herokuapp.com/profile/', profile, { withCredentials: true })
     }
     return (
         <div className='new-profile-container'>

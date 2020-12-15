@@ -9,7 +9,7 @@ export default function Nav() {
     })
 
     const handleClick = () =>{
-        Axios.get('http://localhost:8000/users/logout', {withCredentials: true})
+        Axios.get('https://crewyou-api.herokuapp.com/users/logout', {withCredentials: true})
         .then(
             sessionStorage.removeItem('username'),
             // setUser({ loggedIn: false })
