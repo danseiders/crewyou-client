@@ -10,7 +10,7 @@ export default function NewUserProfile() {
     }, [])
     
     const fetchUser = () => {
-        Axios.get('http://localhost:8000/profile/', { withCredentials: true })
+        Axios.get('http://localhost:8000/profile/user', { withCredentials: true })
     .then(res => {
         setProfile(res.data.data[0])
         })

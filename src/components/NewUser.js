@@ -28,9 +28,7 @@ export default function NewUser() {
         })
     }
 
-    if(redirect.dashboard === true){
-        return <Redirect to='/profile/new'/>
-    } else {
+    
         return (
             <div className='login-container'>
                 <div className='login-form-container'>
@@ -50,4 +48,3 @@ export default function NewUser() {
             </div>
         )   
     }
-}
