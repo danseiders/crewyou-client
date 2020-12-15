@@ -5,8 +5,8 @@ import MessageList from '../components/MessageWindow'
 import DashboardShow from '../components/DashboardShow'
 import io from 'socket.io-client'
 
-const serverURL = 'https://crewyou-api.herokuapp.com/'
-const socket = io.connect(`${serverURL}`, {withCredentials: true})
+// const serverURL = 'https://crewyou-api.herokuapp.com/'
+// const socket = io.connect(`${serverURL}`)
 
 export default function Dashboard() {
     const [user, setUser] = useState({})
@@ -37,15 +37,15 @@ export default function Dashboard() {
         fetchUser()
     }, [])
     
-    useEffect(() => {
-        socketOn()
-    }, [messages.length])
+    // useEffect(() => {
+    //     socketOn()
+    // }, [messages.length])
     
-    const socketOn = () => {
-        socket.on('message', msg => {
-            setMessages([...messages, msg])
-        })
-    }
+    // const socketOn = () => {
+    //     socket.on('message', msg => {
+    //         setMessages([...messages, msg])
+    //     })
+    // }
 
     const handleClick = (event) => {
         setRender({[event.target.id]: true})
@@ -57,13 +57,13 @@ export default function Dashboard() {
     
     const onSubmit = (event) => {
         event.preventDefault()
-        if (message !== ''){
-        socket.emit('message', message)
-        setMessage('')
-        }else{
-            alert('Add a message!')
+    //     if (message !== ''){
+    //     socket.emit('message', message)
+    //     setMessage('')
+    //     }else{
+    //         alert('Add a message!')
+    //     }
         }
-    }
     return (
         <div className='dashboard-container'>
             <LeftSidebar 
