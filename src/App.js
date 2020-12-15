@@ -11,7 +11,7 @@ import NewUser from './components/NewUser';
 
 function App() {
   const user = sessionStorage.username
-  
+
   if (user === undefined) {
       return (
         <div className='App'>
