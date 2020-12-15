@@ -42,11 +42,13 @@
 }
 
 .dashboard-messages-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 15%;
-    height: 100vh;
+    height: 80vh;
     text-align: center;
     position: fixed;
-   
     right: 0;
     top: 0;
     z-index: 0;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function MessageBox(props) {
+export default function Messages(props) {
     return (
         <div className='message-box'>
             {props.messages.map((message) => 

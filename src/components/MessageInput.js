@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function MessageForm(props) {
+export default function MessageInput(props) {
     return (
         <div>
             <form className='message-form' onSubmit={props.onSubmit}>

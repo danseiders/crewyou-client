@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import React, { useState, useEffect} from 'react'
 import LeftSidebar from '../components/LeftSidebar'
-import MessageList from '../components/MessageList'
+import MessageList from '../components/MessageWindow'
 import DashboardShow from '../components/DashboardShow'
 import io from 'socket.io-client'
 
