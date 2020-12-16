@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { useState } from 'react'
 import Dashboard from './views/Dashboard'
 import Nav from './components/Nav';
 import Login from './views/Login';
@@ -8,19 +9,29 @@ import EditUserProfile from './components/EditUserProfile';
 import Home from './views/Home';
 import Footer from './components/Footer';
 import NewUser from './components/NewUser';
+require('dotenv').config()
+
+const loggedIn = sessionStorage.loggedIn
 
 function App() {
-  const user = sessionStorage.username
+  const [user, setUser] = useState({
+    loggedIn: loggedIn,
+    data: {}
+  })
+ 
 
-  if (user === undefined) {
+  if (user.loggedIn == undefined) {
       return (
         <div className='App'>
           <Router >
-            <Nav />
+            <Nav user={user} setUser={setUser}/>
             <Switch>
               <Route path='/' exact component={Home} />
-              <Route path='/login' component={Login} />
-              <Route path='/user/new' exact component={NewUser}/>
+              <Route 
+                path='/login' 
+                render={() => <Login user={user} setUser={setUser}/>}
+                />
+              <Route path='/user/new' user={user} exact component={NewUser}/>
             </Switch>
             <Footer />
           </Router>
@@ -30,11 +41,12 @@ function App() {
       return (
         <div className='App'>
           <Router>
-            <Nav />
+            <Nav user={user} setUser={setUser} />
             <Switch>
-              <Route path='/profile/new' exact component={NewUserProfile}/>
-              <Route path='/profile/edit' exact component={EditUserProfile}/>
-              <Route path='/dashboard' component={Dashboard} />
+              <Route path='/profile/new' user={user} exact component={NewUserProfile}/>
+              <Route path='/profile/edit' user={user} exact component={EditUserProfile}/>
+              <Route path='/dashboard'
+              render={() => <Dashboard user={user} setUser={setUser} />}/>
             </Switch>
             <Footer />
           </Router>
@@ -42,5 +54,6 @@ function App() {
     )
   }
 }
+
 
 export default App;

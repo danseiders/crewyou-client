@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 // import { Redirect } from 'react-router-dom'
 
+const { REACT_APP_SERVER_URL } = process.env
+
 export default function NewUserProfile() {
     const [profile, setProfile] = useState({})
     
@@ -10,7 +12,7 @@ export default function NewUserProfile() {
     }, [])
     
     const fetchUser = () => {
-        Axios.get('https://crewyou-api.herokuapp.com/profile/user', { withCredentials: true })
+        Axios.get(`${REACT_APP_SERVER_URL}/profile/user`, { withCredentials: true })
     .then(res => {
         setProfile(res.data.data[0])
         })
@@ -23,7 +25,7 @@ export default function NewUserProfile() {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(profile)
-        Axios.put(`https://crewyou-api.herokuapp.com/profile/${profile.id}`, {
+        Axios.put(`${REACT_APP_SERVER_URL}/profile/${profile.id}`, {
             firstName: profile.firstName,
             lastName: profile.lastName,
             imgURL: profile.imgURL,
@@ -43,7 +45,7 @@ export default function NewUserProfile() {
         })
     }
     const handleDelete = (event) => {
-        Axios.delete(`https://crewyou-api.herokuapp.com/profile/${profile.id}`)
+        Axios.delete(`${REACT_APP_SERVER_URL}/profile/${profile.id}`)
         .catch(err => {
             console.log(err)
         }).then(res => {

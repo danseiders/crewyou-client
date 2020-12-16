@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Axios from 'axios'
 // import { Redirect } from 'react-router-dom'
 
+const { REACT_APP_SERVER_URL } = process.env
+
 export default function NewUserProfile() {
     const [profile, setProfile] = useState({
         firstName: '',
@@ -22,7 +24,7 @@ export default function NewUserProfile() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        Axios.post('https://crewyou-api.herokuapp.com/profile/', profile, { withCredentials: true })
+        Axios.post(`${REACT_APP_SERVER_URL}/profile/`, profile, { withCredentials: true })
     }
     return (
         <div className='new-profile-container'>

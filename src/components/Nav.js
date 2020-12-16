@@ -1,25 +1,27 @@
 import Axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
-export default function Nav() {
-    // const [user, setUser] = useState({})
+const { REACT_APP_SERVER_URL } = process.env
+
+export default function Nav(props) {
+
     const [render, setRender] = useState({
         createUser: false
     })
 
     const handleClick = () =>{
-        Axios.get('https://crewyou-api.herokuapp.com/users/logout', {withCredentials: true})
+        Axios.get(`${REACT_APP_SERVER_URL}/users/logout`, {withCredentials: true})
         .then(
-            sessionStorage.removeItem('username'),
-            // setUser({ loggedIn: false })
+            sessionStorage.removeItem('loggedIn'),
+            props.setUser({})
             )
         }
     const handleReRender = () => {
         setRender({ createUser: true })
     }
     
-        if(sessionStorage.username === undefined){
+        if(props.user.loggedIn == undefined){
             return (
             <div className='nav-container'>
                 <div>
@@ -38,7 +40,7 @@ export default function Nav() {
                 <Link to='/dashboard'><h1>CrewYou</h1></Link>
             </div>
             <div>
-                <h5>Hello, {sessionStorage.username}</h5>
+                <h5>Hello, {props.user.username}</h5>
                 <Link to='/login'><button>Login</button></Link>
                 <button onClick={handleClick}>Logout</button>
             </div>

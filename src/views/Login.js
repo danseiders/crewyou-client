@@ -2,33 +2,36 @@ import React, {useState} from 'react'
 import Axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
-export default function Login() {
-    const [user, setUser] = useState({})
-    const [redirect, setReload] = useState({dashboard: null})
+const { REACT_APP_SERVER_URL } = process.env
+
+export default function Login(props) {
+    const [redirect, setRedirect] = useState(null)
 
     const handleChange = (event) => {
-        setUser({...user, [event.target.id]: event.target.value})
+        props.setUser({...props.user, [event.target.id]: event.target.value})
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        Axios.post('https://crewyou-api.herokuapp.com/users/login', user, { withCredentials: true })
+        Axios.post(`${REACT_APP_SERVER_URL}/users/login`, {
+            email: props.user.email,
+            password: props.user.password
+        }, { withCredentials: true })
         .then(res => {
             if(res.data.status.code === 200){
-            sessionStorage.setItem('username', res.data.data.username) 
-            sessionStorage.setItem('crew', res.data.crew)
-            setUser({
-                password: '',
-                username: res.data.data.username
-            })
-            setReload({dashboard: true})
+                setRedirect(true)
+                sessionStorage.setItem('loggedIn', true)
+                props.setUser({
+                    data: res.data.data,
+                    loggedIn: true
+                })
             } else {
                 console.log('something went wrong - try again')
             }
         })
     }
 
-    if(redirect.dashboard === true){
+    if(redirect){
         return <Redirect to='/dashboard'/>
     } else {
         return (
