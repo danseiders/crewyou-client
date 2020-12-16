@@ -4,16 +4,18 @@ import LeftSidebar from '../components/LeftSidebar'
 import MessageList from '../components/MessageWindow'
 import DashboardShow from '../components/DashboardShow'
 import io from 'socket.io-client'
+import Home from './Home'
+import Nav from '../components/Nav'
+import { Redirect } from 'react-router-dom'
 
-// const serverURL = 'https://crewyou-api.herokuapp.com/'
-// const socket = io.connect(`${serverURL}`)
+const { REACT_APP_SERVER_URL } = process.env
+// const socket = io.connect(`${REACT_APP_SERVER_URL}`, {withCredentials: true})
 
-export default function Dashboard() {
-    const [user, setUser] = useState({})
+export default function Dashboard(props) {
     const [crew, setCrew] = useState([])
     const [messages, setMessages] = useState(['Hello! Welcome to Crew You!'])
     const [message, setMessage] = useState({
-        username: user.username,
+        username: props.user.username,
         message: ''
     })
     const [render, setRender] = useState({
@@ -22,13 +24,21 @@ export default function Dashboard() {
     
     useEffect( () => {
         function fetchUser() { //this gets the user for user profile display
-            Axios.get('https://crewyou-api.herokuapp.com/profile/user', { withCredentials: true })
+            Axios.get(`${REACT_APP_SERVER_URL}/profile/user`, { withCredentials: true })
             .then(res => {
-                setUser(res.data.data[0])
+                if(res.data.data.length == 0){
+                    props.setUser({profile: false})
+                    console.log('no profile has been made')
+                }else{
+                    props.setUser({
+                        data: res.data.data[0],
+                        loggedIn: true
+                        })
+                    }
                 })
             }
         function fetchCrew() { //this gets all crew profiles on site
-            Axios.get('https://crewyou-api.herokuapp.com/profile/all', { withCredentials: true })
+            Axios.get(`${REACT_APP_SERVER_URL}/profile/all`, { withCredentials: true })
             .then(res => {
                 setCrew(res.data.data)
             })
@@ -36,6 +46,7 @@ export default function Dashboard() {
         fetchCrew()
         fetchUser()
     }, [])
+
     
     // useEffect(() => {
     //     socketOn()
@@ -57,20 +68,26 @@ export default function Dashboard() {
     
     const onSubmit = (event) => {
         event.preventDefault()
-    //     if (message !== ''){
-    //     socket.emit('message', message)
-    //     setMessage('')
-    //     }else{
-    //         alert('Add a message!')
-    //     }
-        }
+        // if (message !== ''){
+        // socket.emit('message', message)
+        // setMessage('')
+        // }else{
+        //     alert('Add a message!')
+        // }
+    }
+    
+    // if (! props.user.loggedIn) {
+    //     return (
+    //         <Home />
+    //     )
+    // } else {
     return (
         <div className='dashboard-container'>
             <LeftSidebar 
                 render={render} 
                 handleClick={handleClick}/>
             <DashboardShow 
-                user={user} 
+                user={props.user} 
                 crew={crew} 
                 render={render}/>
             <MessageList 
@@ -79,5 +96,5 @@ export default function Dashboard() {
                 handleChange={handleChange}
                 onSubmit={onSubmit}/>
         </div>
-    )
-}
+        )
+    }

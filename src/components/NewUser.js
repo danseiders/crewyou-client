@@ -2,11 +2,13 @@ import React, {useState} from 'react'
 import Axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
+const { REACT_APP_SERVER_URL } = process.env
+
 export default function NewUser() {
     const [user, setUser] = useState({
         crew: false
-    })
-    const [redirect, setReload] = useState({dashboard: null})
+})
+    const [reload, setReload] = useState(null)
 
     const handleChange = (event) => {
         setUser({...user, [event.target.id]: event.target.value})
@@ -15,20 +17,24 @@ export default function NewUser() {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(user)
-        Axios.post('https://crewyou-api.herokuapp.com/users/new', user, { withCredentials: true })
+        Axios.post(`${REACT_APP_SERVER_URL}/users/new`, user, { withCredentials: true })
         .then(res => {
             if(res.data.status.code === 201){
             sessionStorage.setItem('username', res.data.data.username) 
             sessionStorage.setItem('crew', res.data.crew)
             setUser({password: ''})
-            setReload({dashboard: true})
+            setReload(true)
             } else {
                 console.log('something went wrong - try again')
             }
         })
     }
 
-    
+        if (reload) {
+            return (
+                <Redirect to='/profile/new' />
+            )
+        }    
         return (
             <div className='login-container'>
                 <div className='login-form-container'>
