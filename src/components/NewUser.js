@@ -34,21 +34,20 @@ export default function NewUser(props) {
             )
         }    
         return (
-            <div className='login-container'>
-                <div className='login-form-container'>
-                    <form className='login-form' onSubmit={handleSubmit}>
-                        <h3>Create a new account</h3>
-                        <label htmlFor='username'>Username</label>
-                        <input className='form-input' type='text' name='username' id='username' onChange={handleChange}></input>
-                        <label htmlFor='email'>Email</label>
-                        <input className='form-input' type='text' name='email' id='email' onChange={handleChange}></input>
-                        <label htmlFor='password'>Password</label>
-                        <input className='form-input' type='password' name='password' id='password' onChange={handleChange}></input>
-                        <label htmlFor='crew'>Are you crew?</label>
-                        <input className='form-input' type='radio' name='crew'id='crew' onChange={handleChange}></input>
-                        <input className='form-input' type='submit' value='Create Account'></input>
-                    </form>
-                </div>
+            <div className='login-form-container'>
+                <form className='login-form' onSubmit={handleSubmit}>
+                    <h3>Create a new account</h3>
+                    <label htmlFor='username'>Username</label>
+                    <input className='form-input' type='text' name='username' id='username' onChange={handleChange}></input>
+                    <label htmlFor='email'>Email</label>
+                    <input className='form-input' type='text' name='email' id='email' onChange={handleChange}></input>
+                    <label htmlFor='password'>Password</label>
+                    <input className='form-input' type='password' name='password' id='password' onChange={handleChange}></input>
+                    <label htmlFor='crew'>Are you crew?
+                    <input className='radio' type='radio' name='crew'id='crew' onChange={handleChange}></input></label>
+                    <input className='form-input btn-dark' type='submit' value='Create Account'></input>
+                </form>
             </div>
+            
         )   
     }

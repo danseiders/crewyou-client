@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <div className='home-main-container'>
             <div className='home-title-about'>
-                <h1>Welcome to Crew You</h1>
+                <h1>Welcome to Crew You!</h1>
                 <p>Here at Crew You, we pride ourselves in empowering our members to unite as one. Touring and Local crew members can share stories, talk rates and look out for each other.</p>
                 <h4>Looking for work? Check out our Job Postings <Link to='/'>here!</Link></h4>
                 <Link to='/user/new'>Create an account</Link><br></br>

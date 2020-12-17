@@ -22,11 +22,11 @@ export default function Nav(props) {
         return (
         <div className='nav-container'>
             <div>
-                <Link to='/'><h1>CrewYou</h1></Link>
+                <Link to='/' className='logo'><h1>CREWYOU</h1></Link>
             </div>
-            <div>
-                <Link to='/user/new'>Create account</Link>
-                <Link to='/login'><button>Sign In</button></Link>
+            <div className='nav-buttons'>
+                <Link to='/user/new' className='nav-buttons'><button className='btn-light'>Create account</button></Link>
+                <Link to='/login'><button className='btn-light'>Sign In</button></Link>
             </div>
         </div>
         )
@@ -34,11 +34,11 @@ export default function Nav(props) {
         return (
             <div className='nav-container'>
                 <div>
-                    <Link to='/dashboard'><h1>CrewYou</h1></Link>
+                    <Link to='/dashboard' className='logo' ><h1>CREWYOU</h1></Link>
                 </div>
-                <div>
-                    <h5>Hello, {props.user.data.firstName}!</h5>
-                    <button onClick={handleClick}>Logout</button>
+                <div className='nav-buttons'>
+                    <h5 className='white'>Hello, {props.user.data.firstName}</h5>
+                    <button onClick={handleClick} className='btn-light'>Logout</button>
                 </div>
             </div>
         )
