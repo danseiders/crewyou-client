@@ -7,6 +7,7 @@ import io from 'socket.io-client'
 import Home from './Home'
 import Nav from '../components/Nav'
 import { Redirect } from 'react-router-dom'
+import NewUserProfile from '../components/NewUserProfile'
 
 const { REACT_APP_SERVER_URL } = process.env
 // const socket = io.connect(`${REACT_APP_SERVER_URL}`, {withCredentials: true})
@@ -26,13 +27,13 @@ export default function Dashboard(props) {
         function fetchUser() { //this gets the user for user profile display
             Axios.get(`${REACT_APP_SERVER_URL}/profile/user`, { withCredentials: true })
             .then(res => {
+                console.log('dashboard', res)
                 if(res.data.data.length == 0){
-                    props.setUser({profile: false})
                     console.log('no profile has been made')
                 }else{
                     props.setUser({
+                        profile: true,
                         data: res.data.data[0],
-                        loggedIn: true
                         })
                     }
                 })
@@ -76,20 +77,21 @@ export default function Dashboard(props) {
         // }
     }
     
-    // if (! props.user.loggedIn) {
-    //     return (
-    //         <Home />
-    //     )
-    // } else {
+    
     return (
         <div className='dashboard-container'>
             <LeftSidebar 
                 render={render} 
                 handleClick={handleClick}/>
-            <DashboardShow 
-                user={props.user} 
-                crew={crew} 
-                render={render}/>
+            { ! props.user.profile ? 
+                <NewUserProfile 
+                    user={props.user} 
+                    setUser={props.setUser} /> 
+                : 
+                <DashboardShow 
+                    user={props.user} 
+                    crew={crew} 
+                    render={render}/>}
             <MessageList 
                 message={message} 
                 messages={messages} 

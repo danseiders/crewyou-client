@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import Axios from 'axios'
+import { Redirect } from 'react-router-dom'
 // import { Redirect } from 'react-router-dom'
 
 const { REACT_APP_SERVER_URL } = process.env
 
-export default function NewUserProfile() {
+export default function NewUserProfile(props) {
+    const [redirect, setRedirect] = useState(false)
     const [profile, setProfile] = useState({
         firstName: '',
         lastName: '',
-        imgURL: null,
+        imgURL: '',
         airport: '',
         about: '',
         position1: '',
@@ -25,6 +27,19 @@ export default function NewUserProfile() {
     const handleSubmit = (event) => {
         event.preventDefault()
         Axios.post(`${REACT_APP_SERVER_URL}/profile/`, profile, { withCredentials: true })
+        .then(res => {
+            sessionStorage.setItem('loggedIn', true)
+            console.log('submit new profile', res) 
+            setRedirect(true)
+            props.setUser({
+                data: res.data.data,
+                profile: true,
+                
+            })
+        })
+    }
+    if(redirect){
+        return <Redirect to='/dashboard' />
     }
     return (
         <div className='new-profile-container'>
