@@ -4,10 +4,8 @@ import { Redirect } from 'react-router-dom'
 
 const { REACT_APP_SERVER_URL } = process.env
 
-export default function NewUser() {
-    const [user, setUser] = useState({
-        crew: false
-})
+export default function NewUser(props) {
+    const [user, setUser] = useState({ crew: false })
     const [reload, setReload] = useState(null)
 
     const handleChange = (event) => {
@@ -16,14 +14,14 @@ export default function NewUser() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(user)
         Axios.post(`${REACT_APP_SERVER_URL}/users/new`, user, { withCredentials: true })
         .then(res => {
             if(res.data.status.code === 201){
-            sessionStorage.setItem('username', res.data.data.username) 
-            sessionStorage.setItem('crew', res.data.crew)
-            setUser({password: ''})
             setReload(true)
+            sessionStorage.setItem('loggedIn', true)
+            props.setUser({
+                data: res.data.data,
+            })
             } else {
                 console.log('something went wrong - try again')
             }
@@ -32,7 +30,7 @@ export default function NewUser() {
 
         if (reload) {
             return (
-                <Redirect to='/profile/new' />
+                <Redirect to='/dashboard' />
             )
         }    
         return (

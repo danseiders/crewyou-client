@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
+import { Redirect } from 'react-router-dom'
 // import { Redirect } from 'react-router-dom'
 
 const { REACT_APP_SERVER_URL } = process.env
 
-export default function NewUserProfile() {
+export default function EditUserProfile(props) {
     const [profile, setProfile] = useState({})
+    const [redirect, setRedirect] = useState()
     
     useEffect(async () => {
         fetchUser()
@@ -42,6 +44,7 @@ export default function NewUserProfile() {
             console.log(err)
         }).then(res => {
             console.log(res)
+            setRedirect(true)
         })
     }
     const handleDelete = (event) => {
@@ -50,10 +53,15 @@ export default function NewUserProfile() {
             console.log(err)
         }).then(res => {
             console.log(res)
+            props.setUser({profile: false})
+            setRedirect(true)
 
         })
     }
 
+    if(redirect){
+        return <Redirect to='/dashboard' />
+    }
     return (
         <div className='new-profile-container'>
             <form className='new-profile-form-container' onSubmit={handleSubmit}>

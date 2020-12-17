@@ -19,11 +19,11 @@ export default function Login(props) {
         }, { withCredentials: true })
         .then(res => {
             if(res.data.status.code === 200){
-                setRedirect(true)
                 sessionStorage.setItem('loggedIn', true)
+                setRedirect(true)
                 props.setUser({
                     data: res.data.data,
-                    loggedIn: true
+
                 })
             } else {
                 console.log('something went wrong - try again')

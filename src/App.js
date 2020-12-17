@@ -11,16 +11,18 @@ import Footer from './components/Footer';
 import NewUser from './components/NewUser';
 require('dotenv').config()
 
-const loggedIn = sessionStorage.loggedIn
+
 
 function App() {
   const [user, setUser] = useState({
-    loggedIn: loggedIn,
+  
+    profile: false,
+    crew: false,
     data: {}
   })
  
 
-  if (user.loggedIn == undefined) {
+  if (sessionStorage.loggedIn == undefined) {
       return (
         <div className='App'>
           <Router >
@@ -29,9 +31,10 @@ function App() {
               <Route path='/' exact component={Home} />
               <Route 
                 path='/login' 
-                render={() => <Login user={user} setUser={setUser}/>}
-                />
-              <Route path='/user/new' user={user} exact component={NewUser}/>
+                render={() => <Login user={user} setUser={setUser}/>}/>
+              <Route 
+                path='/user/new' 
+                render={() => <NewUser user={user} setUser={setUser}/>} />
             </Switch>
             <Footer />
           </Router>
@@ -43,10 +46,12 @@ function App() {
           <Router>
             <Nav user={user} setUser={setUser} />
             <Switch>
-              <Route path='/profile/new' user={user} exact component={NewUserProfile}/>
-              <Route path='/profile/edit' user={user} exact component={EditUserProfile}/>
-              <Route path='/dashboard'
-              render={() => <Dashboard user={user} setUser={setUser} />}/>
+              <Route path='/profile/new' exact
+                render={() => <NewUserProfile user={user} setUser={setUser} />} />
+              <Route path='/profile/edit' exact
+                render={() => <EditUserProfile user={user} setUser={setUser}/>} />
+              <Route path='/dashboard' exact
+                render={() => <Dashboard user={user} setUser={setUser} />}/>
             </Switch>
             <Footer />
           </Router>
