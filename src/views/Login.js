@@ -35,7 +35,6 @@ export default function Login(props) {
         return <Redirect to='/dashboard'/>
     } else {
         return (
-            <div className='login-container'>
                 <div className='login-form-container'>
                     <form className='login-form' onSubmit={handleSubmit}>
                         <h3>Sign In</h3>
@@ -43,10 +42,9 @@ export default function Login(props) {
                         <input className='form-input' type='text' name='email' id='email' onChange={handleChange}></input>
                         <label htmlFor='password'>Password</label>
                         <input className='form-input' type='password' name='password' id='password' onChange={handleChange}></input>
-                        <input className='form-input' type='submit' value='Sign In'></input>
+                        <input className='form-input btn-dark' type='submit' value='Sign In'></input>
                     </form>
                 </div>
-            </div>
         )   
     }
 }

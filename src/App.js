@@ -9,6 +9,7 @@ import EditUserProfile from './components/EditUserProfile';
 import Home from './views/Home';
 import Footer from './components/Footer';
 import NewUser from './components/NewUser';
+
 require('dotenv').config()
 
 

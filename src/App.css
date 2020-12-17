@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
 
+:root {
+    --blue: rgb(27, 126, 255);
+    --white: rgb(224, 224, 223);
+    --purp: rgb(193, 0, 241);
+    --black: rgba(20, 20, 29, 0.959);
+}
 .App {
     height: 100vh;
     width: 100vw;
@@ -7,6 +14,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    font-family:'Roboto',sans-serif;
 }
 
 /*____NAV BAR____*/
@@ -14,12 +22,75 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 98vw;
-    height: 12vh;
+    align-items: center;
+    width: 100vw;
+    height: 10vh;
     position: fixed;
     top: 0;
-    background-color: rgba(203, 231, 255, 0.959);
+    padding: 8px;
+    background-color: rgba(4, 23, 39, 0.959);
 }
+
+.logo{
+    font-family: 'Quicksand', sans-serif;
+    width: 1vw;
+    transition: 500ms;
+}
+.logo:visited, .logo:link {
+    text-decoration: none;
+    color: white;
+}
+
+.logo:hover {
+    font-size: 1.25vw;
+    transition: 500ms;
+}
+
+.nav-buttons{
+    padding: 10px;
+    margin: 10px;
+    
+}
+.btn-light{
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid white;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color: white;
+    background-color: inherit;
+    text-align:center;
+    transition: all 0.2s;
+}
+.btn-dark{
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid var(--black);
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color: var(--black);
+    background-color: var(--white);
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.btn-light:hover{
+    color: var(--purp);
+    background-color: var(--white)
+}
+.btn-dark:hover{
+    color: var(--purp);
+    background-color: var(--white)
+}
+/* ____NEW ACCOUNT____ */
 
 /* _____DASHBOARD_____ */
 .dashboard-sidebar-container {
@@ -75,19 +146,25 @@
 
 .login-container{
     display: flex;
-    width: 100%;
+    width: 25vw;
+    height: 50vh;
     margin: 0 auto;
     justify-content: center;
+    align-items: center;
+    /* background-color: var(--black); */
 }
-
+/* 
 .login-form-container {
     display: flex;
+    align-items: center;
     justify-content: center;
-    height: 400px;
-    width: 25%;
-
-}
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    
+} */
 .login-form {
+    background-color: rgb(237, 237, 250);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -132,15 +209,22 @@
 
 .home-title-img {
     width: 30vw;
-    border-radius: 100000px;
+    border-radius: 300px;
 }
 
 .footer-container {
     font-family: 'Kanit', sans-serif;
     left: 0;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
+    color: var(--white);
     text-align: center;
+    background-color: var(--black);
+}
+.footer-link {
+    color: var(--white);
+    margin: 10px;
+    font-size: 5vh;
 }
 
 .dash-crew-container{ 
@@ -163,4 +247,8 @@ border: 1px solid black;
 background-color: rgb(165, 238, 232);
 border-radius: 10px;;
 padding: 5px;
+}
+
+.white {
+    color: var(--white);
 }
