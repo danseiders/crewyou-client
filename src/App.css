@@ -248,7 +248,7 @@
 .dash-crew-container{ 
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    padding-left: 20px;
     align-items: center;
     border: 1px solid grey;
     border-radius: 10px;
