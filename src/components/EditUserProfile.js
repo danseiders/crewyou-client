@@ -165,8 +165,8 @@ export default function EditUserProfile(props) {
                     onChange= {handleChange}
                     defaultValue={profile.availability}>    
                 </input>
-                <input type='submit' value='Confirm Edits'></input>
-                <button onClick={handleDelete}>Delete Profile</button>
+                <input className='btn-dark' type='submit' value='Confirm Edits'></input>
+                <button className='btn-dark' onClick={handleDelete}>Delete Profile</button>
             </form>
         </div>
     )
