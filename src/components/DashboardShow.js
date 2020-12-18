@@ -30,7 +30,7 @@ export default function DashboardShow(props) {
         )
     } else if (props.render.jobBoardRender) {
         return (
-            <div className='dashboard-show'>
+            <div className='dashboard-show show'>
                 <h1>Job Board</h1>
             </div>
         )
