@@ -3,8 +3,9 @@ import React from 'react'
 export default function Messages(props) {
     return (
         <div className='message-box'>
+            <h4>Messages</h4>
             {props.messages.map((message) => 
-                <div key={message.id}>{message}</div>
+                <div className='message-box-message' key={message.id}>{message}</div>
             )}
         </div>
     )
