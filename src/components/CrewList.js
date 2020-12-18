@@ -8,8 +8,10 @@ export default function CrewList(props) {
                 {props.crew.map((crew)=>
                 <div className='dash-crew-container' key={crew.id}>
                     <img className='dash-crew-img' src={crew.imgURL} alt='member' />
-                    <h4>{crew.firstName}</h4>
-                    <p>{crew.about}</p>
+                    <div>
+                        <h4>{crew.firstName} {crew.lastName} - {crew.airport}<br></br>{crew.position1}</h4>
+                        <p>{crew.about}</p>
+                    </div>
                 </div>
                 )}
             </div>
