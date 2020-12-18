@@ -18,7 +18,7 @@ export default function Footer() {
             <a href='https://www.facebook.com/dan.seiders' target='_blank' className='footer-link' rel="noreferrer">
                 <FontAwesomeIcon icon={faFacebook} className='icon'></FontAwesomeIcon>
             </a>
-            <p>© 2020 Dan Seiders</p>
+            <p className='footer-text'>© 2020 Dan Seiders</p>
         </div>
     )
 }
