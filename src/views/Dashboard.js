@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom'
 import NewUserProfile from '../components/NewUserProfile'
 
 const { REACT_APP_SERVER_URL } = process.env
-// const socket = io.connect(`${REACT_APP_SERVER_URL}`, {withCredentials: true})
+const socket = io.connect(`${REACT_APP_SERVER_URL}`)
 
 export default function Dashboard(props) {
     const [crew, setCrew] = useState([])
@@ -27,13 +27,13 @@ export default function Dashboard(props) {
         function fetchUser() { //this gets the user for user profile display
             Axios.get(`${REACT_APP_SERVER_URL}/profile/user`, { withCredentials: true })
             .then(res => {
-                console.log('dashboard', res)
                 if(res.data.data.length == 0){
                     console.log('no profile has been made')
                 }else{
                     props.setUser({
                         profile: true,
                         data: res.data.data[0],
+                        username: res.data.data[0].user_id.username
                         })
                     }
                 })
@@ -49,32 +49,32 @@ export default function Dashboard(props) {
     }, [])
 
     
-    // useEffect(() => {
-    //     socketOn()
-    // }, [messages.length])
+    useEffect(() => {
+        socketOn()
+    }, [messages.length])
     
-    // const socketOn = () => {
-    //     socket.on('message', msg => {
-    //         setMessages([...messages, msg])
-    //     })
-    // }
+    const socketOn = () => {
+        socket.on('message', msg => {
+            setMessages([...messages, msg])
+        })
+    }
 
     const handleClick = (event) => {
         setRender({[event.target.id]: true})
     }
 
     const handleChange = (event) => {
-        setMessage(sessionStorage.username + ': ' + event.target.value)
+        setMessage(props.user.username + ': ' + event.target.value)
     }
     
     const onSubmit = (event) => {
         event.preventDefault()
-        // if (message !== ''){
-        // socket.emit('message', message)
-        // setMessage('')
-        // }else{
-        //     alert('Add a message!')
-        // }
+        if (message !== ''){
+        socket.emit('message', message)
+        setMessage('')
+        }else{
+            alert('Add a message!')
+        }
     }
     
     
@@ -95,6 +95,7 @@ export default function Dashboard(props) {
             <MessageList 
                 message={message} 
                 messages={messages} 
+                user={props.user}
                 handleChange={handleChange}
                 onSubmit={onSubmit}/>
         </div>
