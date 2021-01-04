@@ -9,7 +9,7 @@ export default function EditUserProfile(props) {
     const [profile, setProfile] = useState({})
     const [redirect, setRedirect] = useState()
     
-    useEffect(async () => {
+    useEffect(() => {
         fetchUser()
     }, [])
     

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import NewUser from '../components/NewUser'
 
 
 export default function Home() {
@@ -15,7 +14,7 @@ export default function Home() {
             
             </div>
             <div>
-                <img className='home-title-img' src='https://s3.us-east-2.amazonaws.com/danseiders.crewyou/IMG_5314.jpg'/>
+                <img className='home-title-img' src='https://s3.us-east-2.amazonaws.com/danseiders.crewyou/IMG_5314.jpg' alt='concert'/>
             </div>
             {/* <NewUser /> */}
         </div>

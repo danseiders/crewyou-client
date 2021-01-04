@@ -18,7 +18,7 @@ export default function Nav(props) {
     
     if(redirect){
         return <Redirect to='/' />
-    } else if(sessionStorage.loggedIn == undefined){
+    } else if(sessionStorage.loggedIn === undefined){
         return (
         <div className='nav-container'>
             <div>

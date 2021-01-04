@@ -5,7 +5,7 @@ export default function Messages(props) {
         <div className='message-box'>
             <h4>Messages</h4>
             {props.messages.map((message) => 
-                <div className='message-box-message' key={message.id}>{message}</div>
+                <div className='message-box-message' key={message._id}>{message}</div>
             )}
         </div>
     )

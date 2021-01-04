@@ -23,7 +23,7 @@ function App() {
   })
  
 
-  if (sessionStorage.loggedIn == undefined) {
+  if (sessionStorage.loggedIn === undefined) {
       return (
         <div className='App'>
           <Router >
