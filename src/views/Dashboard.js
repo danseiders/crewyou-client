@@ -14,7 +14,8 @@ export default function Dashboard(props) {
     const [messages, setMessages] = useState(['Hello! Welcome to Crew You!'])
     const [message, setMessage] = useState({
         username: props.user.username,
-        message: ''
+        message: '',
+        placeholder: 'Write something!'
     })
     const [render, setRender] = useState({
         crewRender: true, //this will be the default view when page is rendered
@@ -68,10 +69,10 @@ export default function Dashboard(props) {
         event.preventDefault()
         if (message !== ''){
         socket.emit('message', message)
-        setMessage('')
         }else{
             alert('Add a message!')
         }
+    
     }
     
     
@@ -94,7 +95,8 @@ export default function Dashboard(props) {
                 messages={messages} 
                 user={props.user}
                 handleChange={handleChange}
-                onSubmit={onSubmit}/>
+                onSubmit={onSubmit}
+                placeholder={message.placeholder}/>
         </div>
         )
     }

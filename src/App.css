@@ -33,6 +33,7 @@
     top: 0;
     padding: 8px;
     background-color: rgba(4, 23, 39, 0.959);
+    z-index: 1;
 }
 
 .logo{
@@ -109,6 +110,7 @@
     margin-top: 12vh;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.404);
     background-color: white;
+   
 }
 .dashboard-show {
     width: 60vw;

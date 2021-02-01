@@ -11,7 +11,8 @@ export default function MessageWindow(props) {
             />
             <MessageInput 
                 handleChange={props.handleChange} 
-                onSubmit={props.onSubmit}/>
+                onSubmit={props.onSubmit}
+                placeholder={props.placeholder}/>
         </div>
     )
 }
