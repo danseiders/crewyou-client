@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import Dashboard from './views/Dashboard'
 import Nav from './components/Nav';
 import Login from './views/Login';
@@ -14,14 +14,13 @@ require('dotenv').config()
 
 
 
-function App() {
+export default function App() {
   const [user, setUser] = useState({
-  
     profile: false,
     crew: false,
     data: {}
   })
- 
+
 
   if (sessionStorage.loggedIn === undefined) {
       return (
@@ -30,11 +29,11 @@ function App() {
             <Nav user={user} setUser={setUser}/>
             <Switch>
               <Route path='/' exact component={Home} />
-              <Route 
-                path='/login' 
+              <Route
+                path='/login'
                 render={() => <Login user={user} setUser={setUser}/>}/>
-              <Route 
-                path='/user/new' 
+              <Route
+                path='/user/new'
                 render={() => <NewUser user={user} setUser={setUser}/>} />
             </Switch>
             <Footer />
@@ -61,5 +60,3 @@ function App() {
   }
 }
 
-
-export default App;
